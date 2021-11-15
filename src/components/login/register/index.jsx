@@ -53,12 +53,12 @@ const RegisterForm = () => {
                 <form class="row g-2 row-form" onSubmit={handleSubmit}>
                     <div class="row g-2">
                         <div class="col-md-5 p-1 ancho-25">
-                            <label for="inputEmail4" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" aria-label="First name" name="name" onChange={handleInputChange} />
+                            <label for="first_name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="first_name" aria-label="first_name" name="name" onChange={handleInputChange} />
                         </div>
                         <div class="col-md-5 p-1 ancho-25">
-                            <label for="inputEmail4" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" aria-label="Last name" name="last_name" onChange={handleInputChange} />
+                            <label for="last_name" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="last_name" aria-label="Last name" name="last_name" onChange={handleInputChange} />
                         </div>
                     </div>
                     <div class="row g-2">
