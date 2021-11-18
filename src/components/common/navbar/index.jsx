@@ -49,19 +49,25 @@ const Header = () => {
                                 </li>
                                 <li className="nav-item dropdown">
 
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                                    {/* <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         PRODUCTOS
-                                    </a>
+                                    </a> */}
+
+                                    <Link to="/productos" className="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        PRODUCTOS
+                                    </Link>
+
                                     <ul className="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <li><a className="dropdown-item" href="#">Bicicletas y triciclos</a></li>
-                                        <li><a className="dropdown-item" href="#">Juegos de mesa</a></li>
-                                        <li><a className="dropdown-item" href="#">Carros y pistas</a></li>
-                                        <li><a className="dropdown-item" href="#">Didacticos</a></li>
-                                        <li><a className="dropdown-item" href="#">Rompecabezas</a></li>
-                                        <li><a className="dropdown-item" href="#">Montables</a></li>
-                                        <li><a className="dropdown-item" href="#">Juguetes electronicos</a></li>
-                                        <li><a className="dropdown-item" href="#">Cocinas</a></li>
+                                        <li><Link to="/productos" className="dropdown-item">Bicicletas y triciclos</Link></li>
+                                        <li><Link to="/productos" className="dropdown-item">Juegos de mesa</Link></li>
+                                        <li><Link to="/productos" className="dropdown-item">Carros y pistas</Link></li>
+                                        <li><Link to="/productos" className="dropdown-item">Didacticos</Link></li>
+                                        <li><Link to="/productos" className="dropdown-item">Rompecabezas</Link></li>
+                                        <li><Link to="/productos" className="dropdown-item">Montables</Link></li>
+                                        <li><Link to="/productos" className="dropdown-item">Juguetes electronicos</Link></li>
+                                        <li><Link to="/productos" className="dropdown-item">Cocinas</Link></li>
                                     </ul>
                                 </li>
                                 <li className="nav-item dropdown">
