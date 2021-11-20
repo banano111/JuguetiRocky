@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import './index.scss'
 
 import Logo from '../../../assets/Juguetirocky.jpeg'
 import Carrito from '../../../assets/carrito.png'
+import UserContext from '../../../context/UserContext';
 
 const Header = () => {
+
+    const { user, login, logout, isUserAuth } = useContext(UserContext) 
+
     return (
         <>
             <div className="container-fluid">
                 <div className="row align-items-center p-2 mb-2">
-                    <div className="col ms-3">
-                        <b>¡Bienvenido Manuel!</b>
-                    </div>
+                    {
+                        isUserAuth
+                            ?   <div className="col ms-3">
+                                    <b>¡Bienvenido {user.name}!</b>
+                                    <button className="btn btn-danger ms-3" onClick={logout}>Logout</button>
+                                </div>
+                            :   <div className="col ms-3">
+                                    <Link to="/login" className="btn color-jugueti me-4">Iniciar Sesión</Link>
+                                    <Link to="/login/register" className="btn color-jugueti ">Registrarse</Link>
+                                </div>
+                    }
                     <div className="col d-flex">
                         <img alt="Logo JuguetiRocky" className="mx-auto" src={Logo} height="80px" width="150px"/>
                     </div>
@@ -23,7 +35,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid border border-danger ">
+            <div className="container-fluid border border-danger">
                 <nav className="navbar navbar-expand-lg navbar-dark mx-auto" id="inferior-navbar">
                     <div className="container-fluid">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,11 +60,6 @@ const Header = () => {
                                     </ul>
                                 </li>
                                 <li className="nav-item dropdown">
-
-                                    {/* <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        PRODUCTOS
-                                    </a> */}
 
                                     <Link to="/productos" className="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">

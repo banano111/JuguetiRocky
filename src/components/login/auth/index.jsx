@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import UserContext from '../../../context/UserContext';
 import { login_auth } from '../../../services';
 import './index.scss';
 
 const AuthForm = () => {
+
+    const { user, login, logout } = useContext(UserContext)
 
     const [userLoginData, setUserLoginData] = useState({
         "user": {
@@ -30,6 +33,7 @@ const AuthForm = () => {
                 
                 if(result.is_auth){
                     console.log(result)
+                    login(result)
                     toast.success("¡Bienvenido " + result.name + " " + result.last_name + "!")
                 }
 
