@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import Logo from '../../../assets/Juguetirocky.jpeg';
 import { getProducts } from "../../../services";
@@ -78,7 +79,9 @@ const ProductCard = ({product}) => (
     <>
         <div className="col " id="margenCol">
             <div className="card border border-danger" id="cardSize">
-                <img src={product.Imagen} className="card-img-top" alt="..." />
+                <Link to={`/productos/${product.id_producto}`}>
+                    <img src={product.Imagen} className="card-img-top" alt="..." />
+                </Link>
                 <div className="card-body">
                     <h5 className="card-title">{product.Nombre}</h5>
                 </div>
