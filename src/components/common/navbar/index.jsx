@@ -6,10 +6,13 @@ import './index.scss'
 import Logo from '../../../assets/Juguetirocky.jpeg'
 import Carrito from '../../../assets/carrito.png'
 import UserContext from '../../../context/UserContext';
+import ShopContext from '../../../context/ShopContext';
 
 const Header = () => {
 
     const { user, login, logout, isUserAuth } = useContext(UserContext)
+
+    const { shoppingProd, productContext, deleteProduct } = useContext(ShopContext)
 
     return (
         <>
@@ -32,78 +35,13 @@ const Header = () => {
                     <div className="col text-end">
                         <img type="button" className="btn btn-primary bg-transparent border-white" data-bs-toggle="modal"
                             data-bs-target="#carrito" alt="Carrito Compra" src={Carrito} />
-                    
-                        <div className="modal fade" id="carrito" tabIndex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLabel">Carrito de compras</h5>
-                                        <button type="button" className="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div className="modal-body">
-                                        <ul className="list-group mb-3">
-                                            <li className="list-group-item d-flex justify-content-between lh-sm">
-                                                <div>
-                                                    <h6 className="my-0">
-                                                        <p>Jijiji jajaja</p>
-                                                    </h6>
-                                                    <small className="text-muted">
-                                                        <p>Breve descripción</p>
-                                                    </small>
-                                                </div>
-                                                <span className="text-muted">
-                                                    <p>$ 120</p>
-                                                </span>
-                                            </li>
-                                            <li className="list-group-item d-flex justify-content-between lh-sm">
-                                                <div>
-                                                    <h6 className="my-0">
-                                                        <p>Torre Stark</p>
-                                                    </h6>
-                                                    <small className="text-muted">
-                                                        <p>Breve descripción</p>
-                                                    </small>
-                                                </div>
-                                                <span className="text-muted">
-                                                    <p>$ 8000</p>
-                                                </span>
-                                            </li>
-                                            <li className="list-group-item d-flex justify-content-between lh-sm">
-                                                <div>
-                                                    <h6 className="my-0">
-                                                        <p>Iron Man Original</p>
-                                                    </h6>
-                                                    <small className="text-muted">
-                                                        <p>Breve descripción</p>
-                                                    </small>
-                                                </div>
-                                                <span className="text-muted">
-                                                    <p>$ 550</p>
-                                                </span>
-                                            </li>
-                                            <li className="list-group-item d-flex justify-content-between">
-                                                <span>
-                                                    <p>Total: </p>
-                                                </span>
-                                                <strong>
-                                                    <p>$ 8720</p>
-                                                </strong>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="modal-footer mx-auto w-50">
-                                        <button type="button" className="btn btn-primary border-white bg-jry"
-                                            >Cancelar</button>
-                                        <button type="button" className="btn btn-primary border-white bg-jry"
-                                            >Comprar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        1 articulo
+
+                        <ModalShop />
+
+                        {shoppingProd > 0
+                            ? <p>{shoppingProd} Productos</p>
+                            : <p></p>
+                        }
                     </div>
                 </div>
             </div>
@@ -170,5 +108,79 @@ const Header = () => {
         </>
     );
 };
+
+const ModalShop = () => {
+
+    const { shoppingProd, productContext, totalShopping, deleteProduct } = useContext(ShopContext)
+
+    console.log(productContext)
+
+    return (
+        <>
+            <div className="modal fade" id="carrito" tabIndex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Carrito de compras</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            {
+                                shoppingProd > 0
+                                    ?
+                                        <ul className="list-group mb-3">
+                                            {
+                                                productContext.map((productCart) => (
+                                                    <ShopProduct
+                                                        productCart={productCart}
+                                                    />
+                                                ))
+                                            }
+                                            <li className="list-group-item d-flex justify-content-between">
+                                                <span><p>Total: </p></span>
+                                                <strong><p>${totalShopping}</p></strong>
+                                            </li>
+                                        </ul>
+                                    : <p className="text-center mt-2">Lo sentimos no hay productos en tu carrito</p>
+
+                            }
+                        </div>
+                        <div className="modal-footer mx-auto w-50">
+                            <button type="button" className="btn btn-primary border-white bg-jry" onClick={() => deleteProduct()}>
+                                Cancelar
+                            </button>
+                            <button type="button" className="btn btn-primary border-white bg-jry"
+                            >Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const ShopProduct = ({ productCart }) => (
+    <>
+        <li className="list-group-item d-flex justify-content-between lh-sm" key={productCart.id_producto}>
+            <div className="row">
+                <div className="col-10 text-start">
+                    <h6>
+                        {productCart.Nombre}
+                    </h6>
+                    <small className="text-muted">
+                        {productCart.Descripcion}
+                    </small>
+                </div>
+                <div className="col"></div>
+
+            </div>
+            <span className="text-muted">
+                <p>${productCart.CostoProducto}</p>
+            </span>
+        </li>
+    </>
+)
 
 export default Header;

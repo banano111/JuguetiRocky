@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom';
 
 import Logo from '../../../assets/Juguetirocky.jpeg';
@@ -8,6 +8,7 @@ import Barbie from '../../../assets/Barbie.png';
 import "./index.scss";
 
 import { most_wanted } from "../../../services/products";
+import ShopContext from "../../../context/ShopContext";
 
 
 const StartPage = () => {
@@ -180,6 +181,7 @@ const MostWantedCards = (props) => (
                 props.productsmw.map((mostwantedprod) => (
                     <IndividualMostWantedCards
                         mostwantedprod={mostwantedprod}
+                        key={mostwantedprod.id_producto}
                     />
                 ))
             }
@@ -188,26 +190,27 @@ const MostWantedCards = (props) => (
 
 )
 
-const IndividualMostWantedCards = ({ mostwantedprod }) => (
-    <>
-        <div className="col mt-5" key={mostwantedprod.id_producto}>
-            <div className="card border border-danger style-18rem">
-                <Link to={`/productos/${mostwantedprod.id_producto}`}>
-                    <img src={mostwantedprod.Imagen} className="card-img-top product-img" alt="..." />
-                </Link>
-                <div className="card-body">
-                    <h5 className="card-title">{mostwantedprod.Nombre}</h5>
-                </div>
-                <div className="card-body">
-                    <a>{mostwantedprod.CostoProducto}</a>
-                </div>
-                <div className="card-body">
-                    <a href="#" className="card-link link-deco">Agregar al carrito</a>
+const IndividualMostWantedCards = ({ mostwantedprod }) => {
+
+    const { productContext, newProductContext, deleteProduct  } = useContext(ShopContext)
+
+    return(
+        <>
+            <div className="col mt-5" key={mostwantedprod.id_producto}>
+                <div className="card border border-danger style-18rem">
+                    <Link to={`/productos/${mostwantedprod.id_producto}`}>
+                        <img src={mostwantedprod.Imagen} className="card-img-top product-img" alt="..." />
+                    </Link>
+                    <div className="card-body mt-2">
+                        <h5 className="card-title">{mostwantedprod.Nombre}</h5>
+                        <p className="fw-bold mt-4">${mostwantedprod.CostoProducto}</p>
+                        <button className="btn color-jugueti" onClick={() => newProductContext(mostwantedprod, mostwantedprod.CostoProducto)}>Agregar al carrito</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </>
+        </>
+    )
 
-)
+}
 
 export default StartPage;
