@@ -21,7 +21,9 @@ const Header = () => {
                     {
                         isUserAuth
                             ? <div className="col ms-3">
-                                <b>¡Bienvenido {user.name}!</b>
+                                <Link to="/user">
+                                    <b>¡Bienvenido {user.name}!</b>
+                                </Link>
                                 <button className="btn btn-danger ms-3" onClick={logout}>Logout</button>
                             </div>
                             : <div className="col ms-3">
@@ -149,10 +151,11 @@ const ModalShop = () => {
                         </div>
                         <div className="modal-footer mx-auto w-50">
                             <button type="button" className="btn btn-primary border-white bg-jry" onClick={() => deleteProduct()}>
-                                Cancelar
+                                Limpiar
                             </button>
-                            <button type="button" className="btn btn-primary border-white bg-jry"
-                            >Comprar</button>
+                            <Link to="/comprar" className="btn btn-primary border-white bg-jry">
+                                Comprar
+                            </Link>
                         </div>
                     </div>
                 </div>
