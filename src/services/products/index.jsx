@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const most_wanted = async () => {
     try {
-        const response = await axios.get("http://localhost:8000/products/mostwanted")
+        const response = await axios.get("https://juguetirocky-api.herokuapp.com/products/mostwanted")
         if (response.data){
             return response.data
         }
@@ -17,7 +17,7 @@ export const most_wanted = async () => {
 
 export const ind_product = async (data) => {
 
-    const url = "http://localhost:8000/products/" + data
+    const url = "https://juguetirocky-api.herokuapp.com/products/" + data
 
     console.log(url)
 
@@ -37,7 +37,7 @@ export const ind_product = async (data) => {
 
 export const getProducts = async () => {
 
-    const url = "http://localhost:8000/products/"
+    const url = "https://juguetirocky-api.herokuapp.com/products/"
 
     console.log(url)
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const login_auth = async (data) => {
     try {
-        const response = await axios.post("http://localhost:8000/login/auth", data)
+        const response = await axios.post("https://juguetirocky-api.herokuapp.com/login/auth", data)
         if (response.data){
             return response.data
         }
@@ -17,7 +17,7 @@ export const login_auth = async (data) => {
 
 export const register_user = async (data) => {
     try {
-        const response = await axios.post("http://localhost:8000/login/register", data)
+        const response = await axios.post("https://juguetirocky-api.herokuapp.com/login/register", data)
         if (response.data){
             return response.data
         }
