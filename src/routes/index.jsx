@@ -1,8 +1,8 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
-
 import { RegisterForm, AuthForm, UserPage } from '../components/login';
 import { StartPage, Categories, IndividualProduct, BuyPage } from '../components/products';
+import { AboutUs } from '../components/common';
 
 const PagePaths = () => (
     <Routes>
@@ -13,6 +13,7 @@ const PagePaths = () => (
         <Route path="/productos/:product_id" element={<IndividualProduct/>}/>
         <Route path="/comprar" element={<BuyPage/>}/>
         <Route path="/user" element={<UserPage/>}/>
+        <Route path="/juguetirocky" element={<AboutUs/>}/>
     </Routes>
 )
 

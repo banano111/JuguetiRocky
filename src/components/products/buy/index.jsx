@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import ShopContext from "../../../context/ShopContext";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import "./index.scss";
 import { create_sale, get_user_sales } from "../../../services";
@@ -84,7 +85,7 @@ const PantallaCarrito = (props) => {
                     <RenderProds
                         productContext={props.productContext}
                     />
-                    <li className="list-group-item d-flex justify-content-between">
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
                         <span>
                             <h5>Total: </h5>
                         </span>
@@ -125,10 +126,11 @@ const IndividualBuy = ({product}) => {
     return (
         <>
             <li className="list-group-item d-flex justify-content-between lh-sm">
-                <div className="row ">
-                    <div className="col mx-auto p-2">
-                        <img src={product.Imagen} className="bd-placeholder-img me-2 " width="64"
-                            height="64" />
+                <div className="row">
+                    <div className="col-2 mx-auto p-2 ms-2 me-4">
+                        <Link to={`/productos/${product.id_producto}`}>
+                            <img src={product.Imagen} className="img-fluid"/>
+                        </Link>
                     </div>
                     <div className="col">
                         <h6 className="my-0">
@@ -139,9 +141,11 @@ const IndividualBuy = ({product}) => {
                         </small>
                     </div>
                 </div>
-                <span className="text-muted">
-                    <p>${product.CostoProducto}</p>
-                </span>
+                <div className="col ms-5 d-flex align-items-center">
+                    <span className="text-muted">
+                        <p>${product.CostoProducto}</p>
+                    </span>
+                </div>
             </li>
         </>
     )

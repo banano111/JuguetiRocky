@@ -44,19 +44,6 @@ const Categories = () => {
                         :   null
                 }
             </div>
-            <div className="listlocator listlocatorbottom clear" >
-                <div id="emlistpager" className="pager">
-                    <div className="clear text-center mt-5" >
-                        <a href="#" className="page active" id="numerosPag" >1</a>
-                        <a href="#" className="page" id="numerosPag">2</a>
-                        <a href="#" className="page" id="numerosPag">3</a>
-                        <a href="#" className="page" id="numerosPag">4</a>
-                        <a href="#" className="page" id="numerosPag">5</a>
-                        <span id="numerosPag">...</span>
-                        <a href="#" className="page" id="numerosPag">20</a>
-                    </div>
-                </div>
-            </div>
         </>
     );
 };
@@ -82,18 +69,16 @@ const ProductCard = ({product}) => {
 
     return(
         <>
-            <div className="col " id="margenCol">
-                <div className="card border border-danger" id="cardSize">
+            <div className="col" id="margenCol">
+                <div className="card border border-danger style-18rem" id="cardSize">
                     <Link to={`/productos/${product.id_producto}`}>
-                        <img src={product.Imagen} className="card-img-top" alt="..." />
+                        <img src={product.Imagen} className="p-4 card-img-top product-img" alt="..." />
                     </Link>
-                    <div className="card-body">
-                        <h5 className="card-title">{product.Nombre}</h5>
+                    <div className="card-body mt-2">
+                        <h5 className="card-title text-center">{product.Nombre}</h5>
+                        <p className="fw-bold mt-4 text-center">${product.CostoProducto}</p>
                     </div>
-                    <div className="card-body">
-                        <a>${product.CostoProducto}</a>
-                    </div>
-                    <div className="card-body mx-auto">
+                    <div className="mx-auto mb-3 p-1">
                         <button className="btn color-jugueti" onClick={() => newProductContext(product, product.CostoProducto)}>Agregar al carrito</button>
                     </div>
                 </div>

@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { API_URL } from '../../consts'
 
 export const most_wanted = async () => {
     try {
-        const response = await axios.get("https://juguetirocky-api.herokuapp.com/products/mostwanted")
+        const response = await axios.get(`${API_URL}/products/mostwanted`)
         if (response.data){
             return response.data
         }
@@ -17,12 +18,8 @@ export const most_wanted = async () => {
 
 export const ind_product = async (data) => {
 
-    const url = "https://juguetirocky-api.herokuapp.com/products/" + data
-
-    console.log(url)
-
     try {
-        const response = await axios.get(url)
+        const response = await axios.get(`${API_URL}/products/${data}`)
         if (response.data){
             return response.data
         }
@@ -36,13 +33,9 @@ export const ind_product = async (data) => {
 }
 
 export const getProducts = async () => {
-
-    const url = "https://juguetirocky-api.herokuapp.com/products/"
-
-    console.log(url)
-
+    
     try {
-        const response = await axios.get(url)
+        const response = await axios.get(`${API_URL}/products/`)
         if (response.data){
             return response.data
         }

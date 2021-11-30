@@ -13,7 +13,7 @@ const App = () =>{
       <ShopProvider>
         <BrowserRouter>
           <Header />
-          <PagePaths />
+          <PagePaths/>
           <Toaster 
             position="top-center"
             reverseOrder={false}

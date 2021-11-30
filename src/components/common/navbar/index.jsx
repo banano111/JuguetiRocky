@@ -22,7 +22,7 @@ const Header = () => {
                         isUserAuth
                             ? <div className="col ms-3">
                                 <Link to="/user">
-                                    <b>¡Bienvenido {user.name}!</b>
+                                    <b>¡Bienvenid@ {user.name}!</b>
                                 </Link>
                                 <button className="btn btn-danger ms-3" onClick={logout}>Logout</button>
                             </div>
@@ -73,21 +73,9 @@ const Header = () => {
                                 </li>
                                 <li className="nav-item dropdown">
 
-                                    <Link to="/productos" className="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <Link to="/productos" className="nav-link">
                                         PRODUCTOS
                                     </Link>
-
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <li><Link to="/productos" className="dropdown-item">Bicicletas y triciclos</Link></li>
-                                        <li><Link to="/productos" className="dropdown-item">Juegos de mesa</Link></li>
-                                        <li><Link to="/productos" className="dropdown-item">Carros y pistas</Link></li>
-                                        <li><Link to="/productos" className="dropdown-item">Didacticos</Link></li>
-                                        <li><Link to="/productos" className="dropdown-item">Rompecabezas</Link></li>
-                                        <li><Link to="/productos" className="dropdown-item">Montables</Link></li>
-                                        <li><Link to="/productos" className="dropdown-item">Juguetes electronicos</Link></li>
-                                        <li><Link to="/productos" className="dropdown-item">Cocinas</Link></li>
-                                    </ul>
                                 </li>
                                 <li className="nav-item dropdown">
 
@@ -114,8 +102,6 @@ const Header = () => {
 const ModalShop = () => {
 
     const { shoppingProd, productContext, totalShopping, deleteProduct } = useContext(ShopContext)
-
-    console.log(productContext)
 
     return (
         <>
@@ -153,9 +139,11 @@ const ModalShop = () => {
                             <button type="button" className="btn btn-primary border-white bg-jry" onClick={() => deleteProduct()}>
                                 Limpiar
                             </button>
-                            <Link to="/comprar" className="btn btn-primary border-white bg-jry">
-                                Comprar
-                            </Link>
+                            <button className="btn" data-bs-dismiss="modal">
+                                <Link to="/comprar" className="btn btn-primary border-white bg-jry">
+                                    Comprar
+                                </Link>
+                            </button>
                         </div>
                     </div>
                 </div>

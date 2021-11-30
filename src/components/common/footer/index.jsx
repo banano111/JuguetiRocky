@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 import './index.scss'
 
@@ -18,7 +19,7 @@ const Footer = () => {
                     <div className="col-6 col-md">
                         <h5>Sobre nosotros</h5>
                         <ul className="list-unstyled text-small">
-                            <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">¿Quienes somos?</a></li>
+                            <li className="mb-1"><Link to="/juguetirocky" className="link-secondary text-decoration-none">¿Quienes somos?</Link></li>
                         </ul>
                     </div>
                     <div className="col-6 col-md">

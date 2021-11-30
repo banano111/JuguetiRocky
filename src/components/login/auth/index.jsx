@@ -37,7 +37,7 @@ const AuthForm = () => {
                 if (result.is_auth) {
                     console.log(result)
                     login(result)
-                    toast.success("¡Bienvenido " + result.name + " " + result.last_name + "!")
+                    toast.success("¡Bienvenid@ " + result.name + " " + result.last_name + "!")
                     setTimeout(() => { navigate("/"); }, 500);
                     
                 }
@@ -70,11 +70,11 @@ const AuthForm = () => {
                         <form className="row row-cols-2 g-4 justify-content-around" onSubmit={handleSubmit}>
                             <div className="col-5">
                                 <label htmlFor="inputEmail4" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="inputEmail4" name="email" onChange={handleInputChange}/>
+                                <input type="email" className="form-control" id="inputEmail4" name="email" onChange={handleInputChange} required/>
                             </div>
                             <div className="col-5">
                                 <label htmlFor="inputPassword4" className="form-label">Contraseña</label>
-                                <input type="password" className="form-control" id="inputPassword4" name="password" onChange={handleInputChange}/>
+                                <input type="password" className="form-control" id="inputPassword4" name="password" onChange={handleInputChange} required/>
                             </div>
                             <div className="col-12 d-grid mt-5">
                                 <button type="submit" className="mx-auto btn w-50 text-white login-button">Iniciar Sesión</button>

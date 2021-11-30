@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom';
 
-import Logo from '../../../assets/Juguetirocky.jpeg';
 import FondoDinos from '../../../assets/fondoDinos.png';
 import Barbie from '../../../assets/Barbie.png';
+import Promo2x1 from '../../../assets/Promo2x1.png';
+import Promo1 from '../../../assets/promo1.png';
+import Promo2 from '../../../assets/promo2.png';
 
 import "./index.scss";
 
@@ -79,30 +81,31 @@ const StartPage = () => {
 
             {/* <!--INICIO CARDS--> */}
 
+            <div className="container">
+                <h1 className="mt-5 mb-2">Más Buscados</h1>
+            </div>
+
             {
                 isReady
                     ?   <MostWantedCards
                             productsmw={mostWantedProducts}
                         />
-                    :   <ProductCards />
-
+                    :   hasError
+                            ? <ErrorComponent/>
+                            : <LoadingComponent/>
             }
 
             {/* <!--FIN CARDS--> */}
             {/* <!--INICIO COLECCIONES--> */}
             <div className="container mb-2" >
-                <h1 className="mb-2">COLECCIONES</h1>
-                <div className="row">
-                    <div className="col-6">
-                        <img href="#" src={Logo} className="rounded mx-auto coleccion-600" width="600px" height="300px" alt="..." />
+                <h1 className="mb-2">Promociones</h1>
+                <div className="row mt-4 justify-content-between">
+                    <div className="col-6 ms-5 me-4">
+                        <img src={Promo2x1} className="rounded coleccion-600" alt="..." />
                     </div>
-                    <div className="col-3">
-                        <img href="#" src={Logo} className="rounded mx-auto coleccion-300" alt="..." />
-                        <img href="#" src={Logo} className="rounded mx-auto coleccion-300" alt="..." />
-                    </div>
-                    <div className="col-3">
-                        <img href="#" src={Logo} className="rounded mx-auto coleccion-300" alt="..." />
-                        <img href="#" src={Logo} className="rounded mx-auto coleccion-300" alt="..." />
+                    <div className="col ms-5">
+                        <img src={Promo1} className="rounded mx-auto d-block coleccion-300 mb-2" alt="..." />
+                        <img src={Promo2} className="rounded mx-auto d-block coleccion-300" alt="..." />
                     </div>
                 </div>
             </div>
@@ -111,72 +114,22 @@ const StartPage = () => {
     );
 };
 
-const ProductCards = () => (
+const LoadingComponent = () => (
     <>
-        <div className="container-fluid row row-cols-1 row-cols-md-4 g-4 mx-auto" Id="ContenedorIni">
-            <div className="col mt-5">
-                <div className="card border border-danger style-18rem">
-                    <img src={Logo} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Iron man</h5>
-                    </div>
-                    <div className="card-body">
-                        <a>$599</a>
-                    </div>
-                    <div className="card-body">
-                        <a href="#" className="card-link link-deco">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div className="col mt-5">
-                <div className="card border border-danger style-18rem">
-                    <img src={Logo} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Iron man</h5>
-                    </div>
-                    <div className="card-body">
-                        <a>$599</a>
-                    </div>
-                    <div className="card-body">
-                        <a href="#" className="card-link link-deco">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div className="col mt-5">
-                <div className="card border border-danger style-18rem">
-                    <img src={Logo} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Iron man</h5>
-                    </div>
-                    <div className="card-body">
-                        <a>$599</a>
-                    </div>
-                    <div className="card-body">
-                        <a href="#" className="card-link link-deco">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div className="col mt-5">
-                <div className="card border border-danger style-18rem">
-                    <img src={Logo} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Iron man</h5>
-                    </div>
-                    <div className="card-body">
-                        <a>$599</a>
-                    </div>
-                    <div className="card-body">
-                        <a href="#" className="card-link link-deco">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p>Cargando ...</p>
+        <img src="https://media2.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif" alt=""/>
     </>
-)
+);
+
+const ErrorComponent = () => (
+    <>
+        <p>Ups! Algo falló al traer las películas</p>
+    </>
+);
 
 const MostWantedCards = (props) => (
     <>
-        <div className="container-fluid row row-cols-1 row-cols-md-4 g-4 mx-auto" Id="ContenedorIni">
+        <div className="container-fluid row row-cols-1 row-cols-md-4 g-4 mx-auto" id="ContenedorIni">
             {
                 props.productsmw.map((mostwantedprod) => (
                     <IndividualMostWantedCards
@@ -196,15 +149,15 @@ const IndividualMostWantedCards = ({ mostwantedprod }) => {
 
     return(
         <>
-            <div className="col mt-5" key={mostwantedprod.id_producto}>
+            <div className="col mt-4" key={mostwantedprod.id_producto}>
                 <div className="card border border-danger style-18rem">
                     <Link to={`/productos/${mostwantedprod.id_producto}`}>
-                        <img src={mostwantedprod.Imagen} className="card-img-top product-img" alt="..." />
+                        <img src={mostwantedprod.Imagen} className="p-4 card-img-top product-img" alt="..." />
                     </Link>
                     <div className="card-body mt-2">
                         <h5 className="card-title">{mostwantedprod.Nombre}</h5>
                         <p className="fw-bold mt-4">${mostwantedprod.CostoProducto}</p>
-                        <button className="btn color-jugueti" onClick={() => newProductContext(mostwantedprod, mostwantedprod.CostoProducto)}>Agregar al carrito</button>
+                        <button className="btn color-jugueti mb-3 p-1" onClick={() => newProductContext(mostwantedprod, mostwantedprod.CostoProducto)}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>

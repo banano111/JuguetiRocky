@@ -59,19 +59,19 @@ const RegisterForm = () => {
                         <form className="row row-cols-2 g-4 justify-content-around" onSubmit={handleSubmit}>
                             <div className="col-5">
                                 <label for="inputEmail4" className="form-label">Nombre</label>
-                                <input type="text" name="name" className="form-control" id="inputEmail4" onChange={handleInputChange}/>
+                                <input type="text" name="name" className="form-control" id="inputEmail4" onChange={handleInputChange} required/>
                             </div>
                             <div className="col-5">
                                 <label for="inputPassword4" className="form-label">Apellido</label>
-                                <input type="text" name="last_name" className="form-control" id="inputPassword4" onChange={handleInputChange}/>
+                                <input type="text" name="last_name" className="form-control" id="inputPassword4" onChange={handleInputChange} required/>
                             </div>
                             <div className="col-5">
                                 <label for="inputEmail4" className="form-label">Email</label>
-                                <input type="email" name="email" className="form-control" id="inputEmail4" onChange={handleInputChange}/>
+                                <input type="email" name="email" className="form-control" id="inputEmail4" onChange={handleInputChange} required/>
                             </div>
                             <div className="col-5">
                                 <label for="inputPassword4" className="form-label">Contraseña</label>
-                                <input type="password" name="password" className="form-control" id="inputPassword4"onChange={handleInputChange}/>
+                                <input type="password" name="password" className="form-control" id="inputPassword4"onChange={handleInputChange} required/>
                             </div>
                             <div className="col-12 d-grid mt-5">
                                 <button type="submit" className="mx-auto btn w-50 text-white login-button">Crear Usuario</button>
