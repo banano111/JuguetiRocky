@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.scss'
 
-import Logo from '../../../assets/Juguetirocky.jpeg'
+import Logo from '../../../assets/Juguetirocky.png'
 
 const Footer = () => {
     return (

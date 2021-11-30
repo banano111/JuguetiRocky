@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.scss'
 
-import Logo from '../../../assets/Juguetirocky.jpeg'
+import Logo from '../../../assets/Juguetirocky.png'
 import Carrito from '../../../assets/carrito.png'
 import UserContext from '../../../context/UserContext';
 import ShopContext from '../../../context/ShopContext';
