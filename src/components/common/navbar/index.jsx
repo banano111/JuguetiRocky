@@ -65,10 +65,18 @@ const Header = () => {
                                         CATEGORIAS
                                     </a>
                                     <ul className="dropdown-menu " aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <li><a className="dropdown-item active" href="#">Preescolar</a></li>
-                                        <li><a className="dropdown-item" href="#">Niñas</a></li>
-                                        <li><a className="dropdown-item" href="#">Niños</a></li>
-                                        <li><a className="dropdown-item" href="#">Mixtos</a></li>
+                                        <li>
+                                            <Link to="/productos/?categoria=Preescolar" className="dropdown-item">Preescolar</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/productos/?categoria=Niñas" className="dropdown-item">Niñas</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/productos/?categoria=Niños" className="dropdown-item">Niños</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/productos/?categoria=Mixtos" className="dropdown-item">Mixtos</Link>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li className="nav-item dropdown">
@@ -84,10 +92,18 @@ const Header = () => {
                                         MARCAS
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <li><a className="dropdown-item" href="#">Mattel</a></li>
-                                        <li><a className="dropdown-item" href="#">Hasbro</a></li>
-                                        <li><a className="dropdown-item" href="#">Lego</a></li>
-                                        <li><a className="dropdown-item" href="#">PlayMovil</a></li>
+                                        <li>
+                                            <Link to="/productos/?marca=Mattel" className="dropdown-item">Mattel</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/productos/?marca=Hasbro" className="dropdown-item">Hasbro</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/productos/?marca=Lego" className="dropdown-item">Lego</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/productos/?marca=PlayMovil" className="dropdown-item">PlayMobil</Link>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>

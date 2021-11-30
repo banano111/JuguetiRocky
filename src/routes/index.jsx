@@ -10,6 +10,7 @@ const PagePaths = () => (
         <Route path="/login" element={<AuthForm/>}/>
         <Route path="/login/register" element={<RegisterForm/>}/>
         <Route path="/productos" element={<Categories/>}/>
+            <Route path="*" element={<Categories/>}/>
         <Route path="/productos/:product_id" element={<IndividualProduct/>}/>
         <Route path="/comprar" element={<BuyPage/>}/>
         <Route path="/user" element={<UserPage/>}/>
