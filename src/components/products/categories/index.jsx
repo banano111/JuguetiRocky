@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Logo from '../../../assets/Juguetirocky.jpeg';
 import ShopContext from "../../../context/ShopContext";
 import { getProducts } from "../../../services";
@@ -10,6 +10,29 @@ const Categories = () => {
     const [hasError, setHasError] = useState(false)
     const [isReady, setIsReady] = useState(false)
     const [totalProducts, setTotalProducts] = useState(null)
+    let [searchParams, setSearchParams] = useSearchParams();
+
+    var marca = searchParams.get("marca")
+    var categoria = searchParams.get("categoria")
+    var query = null
+
+    if (marca !== null) {
+        query = {
+            "tipo": "marca",
+            "valor": marca
+        }
+    }
+
+    else if (categoria !== null) {
+        query = {
+            "tipo": "categoria",
+            "valor": categoria
+        }
+    }
+
+    else {
+        query = null
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,10 +61,12 @@ const Categories = () => {
             <div className="container-fluid row row-cols-1 row-cols-md-4 g-4 mt-4 mx-auto" id="contenedor">
                 {
                     isReady
-                        ?   <RenderAllProducts
-                                products={totalProducts}
-                            />
-                        :   null
+                        ? <RenderAllProducts
+                            products={totalProducts}
+                            key={totalProducts.id_producto}
+                            query={query}
+                        />
+                        : null
                 }
             </div>
         </>
@@ -51,23 +76,38 @@ const Categories = () => {
 
 const RenderAllProducts = (props) => (
     <>
-        {
-            props.products.map((product) => (
-                <ProductCard
-                    product={product}
-                />
-            ))
-        }
+        {         
+            props.query == null
+                ?   props.products.map((product) => (
+                        <ProductCard
+                            product={product}
+                            key={product.id_producto}
+                        />
+                    ))
+                :   props.query.tipo == "categoria"
+                        ?   props.products.filter(prod => prod.Categoria == props.query.valor).map((product) => (
+                                <ProductCard
+                                    product={product}
+                                    key={product.id_producto}
+                                />
+                            ))
+                        :   props.products.filter(prod => prod.Marca == props.query.valor).map((product) => (
+                                <ProductCard
+                                    product={product}
+                                    key={product.id_producto}
+                                />
+                            ))
+            }
     </>
 )
 
 
 
-const ProductCard = ({product}) => {
-    
-    const { productContext, newProductContext, deleteProduct  } = useContext(ShopContext)
+const ProductCard = ({ product }) => {
 
-    return(
+    const { productContext, newProductContext, deleteProduct } = useContext(ShopContext)
+
+    return (
         <>
             <div className="col" id="margenCol">
                 <div className="card border border-danger style-18rem" id="cardSize">
