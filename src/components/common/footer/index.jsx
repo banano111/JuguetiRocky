@@ -25,14 +25,21 @@ const Footer = () => {
                     <div className="col-6 col-md">
                         <h5>Servicio al cliente</h5>
                         <ul className="list-unstyled text-small">
-                            <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Garantías</a></li>
-                            <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Preventas</a></li>
+                            <li className="mb-1 link-secondary">Garantías: +52 1 5520889010</li>
+                            <li className="mb-1 link-secondary">Preventas: preventas@jrocky.mx</li>
                         </ul>
                     </div>
                     <div className="col-6 col-md">
                         <h5>Legales</h5>
                         <ul className="list-unstyled text-small">
-                            <li className="mb-1"><a className="link-secondary text-decoration-none" href="#">Politícas de privacidad</a></li>
+                            <li className="mb-1">
+                                {/* <a className="link-secondary text-decoration-none" href="https://www.gob.mx/se/acciones-y-programas/del-aviso-de-privacidad-integral-de-la-secretaria-de-economia?state=published">
+                                    Politícas de privacidad
+                                </a> */}
+                                <Link to="/avisoPrivacidad" className="link-secondary text-decoration-none">
+                                    Aviso de Privacidad
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

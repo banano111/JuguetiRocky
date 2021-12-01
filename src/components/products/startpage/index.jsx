@@ -57,12 +57,12 @@ const StartPage = () => {
                             </div>
                         </div>
                         <div className="carousel-item" data-bs-interval="2000">
-                            <img src={Barbie} className="d-block w-100" alt="..." />
+                            <img src="https://oechsle.vteximg.com.br/arquivos/bannerplp-cyberwow-oct2021-lego-mobile.png" className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block">
                             </div>
                         </div>
                         <div className="carousel-item">
-                            <img src={FondoDinos} className="d-block w-100" alt="..." />
+                            <img src="https://dzonwrx1ctmqu.cloudfront.net/images/landing/Landing_banner_legocity.png" className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block">
                             </div>
                         </div>
@@ -82,7 +82,7 @@ const StartPage = () => {
             {/* <!--INICIO CARDS--> */}
 
             <div className="container">
-                <h1 className="mt-5 mb-2">Más Buscados</h1>
+                <h1 className="mt-5 mb-2">Más Vendidos</h1>
             </div>
 
             {
@@ -116,14 +116,16 @@ const StartPage = () => {
 
 const LoadingComponent = () => (
     <>
-        <p>Cargando ...</p>
-        <img src="https://media2.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif" alt=""/>
+        <div className="container mx-auto d-flex">
+            <p>Cargando ...</p>
+            <img className="mx-auto justify-content-center" src="https://media2.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif" alt=""/>
+        </div>
     </>
 );
 
 const ErrorComponent = () => (
     <>
-        <p>Ups! Algo falló al traer las películas</p>
+        <p>Ups! Algo falló al traer los Juguetes</p>
     </>
 );
 
