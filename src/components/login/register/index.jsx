@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { register_user } from '../../../services';
 import './index.scss';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
+
+    let navigate = useNavigate()
 
     const [newUserData, setnewUserData] = useState({
         "new_user": {
@@ -33,6 +36,7 @@ const RegisterForm = () => {
             if (!result.hasError) {
 
                 if (result.user_created) {
+                    setTimeout(() => { navigate("/"); }, 500);
                     console.log(result)
                     toast.success("Usuario Creado Exitosamente")
                 }
